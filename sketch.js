@@ -11,7 +11,7 @@ function setup() {
     canvas.getContext('2d', { willReadFrequently: true });
 
     colours.sort(() => Math.random() - 0.5)
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 60; i++) {
         let tadpole = new Tadpole(random(width), random(height));
         tadpole.velocity = p5.Vector.random2D();
         tadpoles.push(tadpole);
@@ -72,7 +72,7 @@ class Tadpole {
         this.speed = (1 / this.size) * 2;
         this.maxspeed = random(0.5, 3);
         this.maxforce = 0.0001;
-        this.seed = random();
+        this.seed = random(0.2, 1);
     }
 
     update() {
@@ -122,7 +122,7 @@ class Tadpole {
         beginShape();
         vertex(-this.size / 2, 0);
         vertex((-this.size / 2) + map(sin((frameCount * this.speed + this.seed) % TAU), -1, 1, 0, 1) * this.size / 6, this.size / 2);
-        vertex((this.seed * 2 - 1) * sin((frameCount * this.speed + this.seed) % TAU) * this.size / 2, this.size * 3);
+        vertex(-this.seed * sin((frameCount * this.speed + this.seed) % TAU) * this.size / 3, this.size * 3);
         vertex((this.size / 2) + map(sin((frameCount * this.speed + this.seed) % TAU), -1, 1, -1, 0) * this.size / 6, this.size / 2);
         vertex(this.size / 2, 0);
         endShape();
