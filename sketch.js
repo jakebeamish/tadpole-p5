@@ -128,8 +128,8 @@ class Tadpole {
         endShape();
 
         // eyes
-        fill(colours[3]);
-        stroke(colours[3]);
+        fill(colours[0]);
+        stroke(colours[0]);
         circle(-this.size / 4, -this.size / 4, 1);
         circle(+this.size / 4, -this.size / 4, 1);
 
