@@ -6,7 +6,7 @@ let target;
 
 function setup() {
     // colours = [0, 255, 100, color('teal'), color('bisque')];
-    colours = [0, 10, 128, 255];
+    colours = [0, 255];
     createCanvas(windowWidth, windowHeight);
     canvas.getContext('2d', { willReadFrequently: true });
 
@@ -34,13 +34,18 @@ function draw() {
         // tadpole.applyForce(tadpole.seek(mouse));
         // tadpole.applyForce(tadpole.seek(createVector()));
         // if (tadpole.seed > 0.5) tadpole.applyForce(tadpole.seek(mouse));
+        const current = createVector(1, 0);
+        current.limit(tadpole.maxforce);
+        tadpole.applyForce(current);
+
         tadpole.applyForce(tadpole.seek(target));
+
         tadpole.update();
         tadpole.wrapEdges();
         tadpole.show();
     }
 
-    background(colours[2], 50)
+    background(colours[0], 50)
 
         // let amount = 200;
         // loadPixels();
