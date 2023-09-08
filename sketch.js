@@ -38,9 +38,6 @@ function draw() {
         // const current = createVector(1, 0);
         // current.limit(tadpole.maxforce);
         // tadpole.applyForce(current);
-
-        // tadpole.applyForce(tadpole.seek(target));
-
         tadpole.flock(tadpoles);
         tadpole.update();
         tadpole.wrapEdges();
@@ -79,10 +76,10 @@ class Tadpole {
         // this.size = 7;
 
         this.speed = (1 / this.size) * 2;
-        this.maxspeed = random(2.5, 3);
+        this.maxspeed = random(2.5, 6);
         // this.maxspeed = 3;
         this.maxforce = 1;
-        this.seed = random(0.2, 1);
+        this.seed = random(0.1, 2);
     }
 
     update() {
@@ -99,6 +96,7 @@ class Tadpole {
         let alignment = this.align(others);
         let cohesion = this.cohesion(others);
         let seperation = this.seperation(others);
+
 
         alignment.mult(0.3);
         cohesion.mult(0.1);
